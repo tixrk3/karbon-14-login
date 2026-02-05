@@ -1,18 +1,38 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useAuth } from "@/contexts/AuthContext";
 import karbon14Logo from "@/assets/karbon14-logo.png";
+import { toast } from "sonner";
 
 export const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Connexion avec:", { email, password });
+    setIsLoading(true);
+
+    // Simulate API call delay
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    const success = login(email, password);
+    
+    if (success) {
+      toast.success("Connexion réussie !");
+      navigate("/dashboard");
+    } else {
+      toast.error("Email ou mot de passe incorrect");
+    }
+    
+    setIsLoading(false);
   };
 
   return (
@@ -83,9 +103,10 @@ export const LoginForm = () => {
         {/* Login Button */}
         <Button
           type="submit"
+          disabled={isLoading}
           className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-primary/25"
         >
-          Se connecter
+          {isLoading ? "Connexion..." : "Se connecter"}
         </Button>
 
         {/* Visit Site Button */}
