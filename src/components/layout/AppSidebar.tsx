@@ -20,17 +20,14 @@ export const AppSidebar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <aside className="w-64 min-h-screen bg-sidebar sidebar-pattern flex flex-col border-r border-sidebar-border">
+    <aside className="w-72 min-h-screen bg-sidebar flex flex-col border-r border-sidebar-border">
       {/* Logo */}
-      <div className="p-6 flex flex-col items-center border-b border-sidebar-border">
+      <div className="p-8 flex flex-col items-center border-b border-sidebar-border/50">
         <img
           src={karbon14Logo}
           alt="KARBON14"
-          className="h-20 w-auto mb-2"
+          className="h-28 w-auto drop-shadow-lg"
         />
-        <span className="text-sidebar-foreground font-bold text-lg tracking-wide">
-          KARBON14
-        </span>
       </div>
 
       {/* Navigation */}

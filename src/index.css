@@ -121,17 +121,7 @@
   }
 
   .stat-card {
-    @apply bg-card border border-border/30 rounded-xl p-5 transition-all duration-200 hover:border-primary/30;
-  }
-
-  .sidebar-pattern {
-    background-image: repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 8px,
-      hsl(var(--border) / 0.15) 8px,
-      hsl(var(--border) / 0.15) 9px
-    );
+    @apply bg-card border border-border/30 rounded-xl p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5;
   }
 
   .tag-card {
