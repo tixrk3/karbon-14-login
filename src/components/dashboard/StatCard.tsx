@@ -15,34 +15,38 @@ interface StatCardProps {
 
 export const StatCard = ({ icon, iconBg, label, value, trend }: StatCardProps) => {
   return (
-    <div className="stat-card">
-      <div className="flex items-start justify-between mb-4">
-        <div
-          className={cn(
-            "w-12 h-12 rounded-xl flex items-center justify-center",
-            iconBg || "bg-primary/20"
-          )}
-        >
-          {icon}
-        </div>
+    <div className="stat-card group">
+      <div className="flex items-center justify-between mb-5">
+        <p className="text-muted-foreground text-sm font-medium uppercase tracking-wide">{label}</p>
         {trend && (
           <div
             className={cn(
-              "flex items-center gap-1 text-sm font-medium",
-              trend.isPositive ? "trend-up" : "trend-down"
+              "flex items-center gap-1.5 text-sm font-semibold px-2.5 py-1 rounded-full",
+              trend.isPositive 
+                ? "bg-accent/15 text-accent" 
+                : "bg-destructive/15 text-destructive"
             )}
           >
             {trend.isPositive ? (
-              <TrendingUp className="h-4 w-4" />
+              <TrendingUp className="h-3.5 w-3.5" />
             ) : (
-              <TrendingDown className="h-4 w-4" />
+              <TrendingDown className="h-3.5 w-3.5" />
             )}
             <span>{trend.value}</span>
           </div>
         )}
       </div>
-      <p className="text-muted-foreground text-sm mb-1">{label}</p>
-      <p className="text-2xl font-bold text-foreground">{value}</p>
+      <div className="flex items-end justify-between">
+        <p className="text-3xl font-bold text-foreground tracking-tight">{value}</p>
+        <div
+          className={cn(
+            "w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110",
+            iconBg || "bg-primary/20"
+          )}
+        >
+          {icon}
+        </div>
+      </div>
     </div>
   );
 };

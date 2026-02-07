@@ -44,30 +44,47 @@ const viewabilityData = [
 export const ImpressionsChart = () => {
   return (
     <div className="stat-card h-80">
-      <h3 className="text-lg font-semibold text-foreground mb-4">Impressions & Clicks</h3>
-      <ResponsiveContainer width="100%" height="85%">
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="text-lg font-semibold text-foreground">Impressions & Clicks</h3>
+        <span className="text-xs text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">7 derniers jours</span>
+      </div>
+      <ResponsiveContainer width="100%" height="80%">
         <AreaChart data={impressionsData}>
           <defs>
             <linearGradient id="impressionsGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="hsl(var(--accent))" stopOpacity={0.4} />
-              <stop offset="95%" stopColor="hsl(var(--accent))" stopOpacity={0} />
+              <stop offset="0%" stopColor="hsl(var(--accent))" stopOpacity={0.3} />
+              <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-          <XAxis dataKey="day" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-          <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+          <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.5} />
+          <XAxis 
+            dataKey="day" 
+            stroke="hsl(var(--muted-foreground))" 
+            fontSize={11} 
+            tickLine={false}
+            axisLine={false}
+          />
+          <YAxis 
+            stroke="hsl(var(--muted-foreground))" 
+            fontSize={11} 
+            tickLine={false}
+            axisLine={false}
+            tickFormatter={(value) => `${(value / 1000).toFixed(0)}k`}
+          />
           <Tooltip
             contentStyle={{
               backgroundColor: "hsl(var(--card))",
               border: "1px solid hsl(var(--border))",
-              borderRadius: "8px",
+              borderRadius: "12px",
+              boxShadow: "0 10px 40px -10px hsl(var(--accent) / 0.2)",
             }}
+            labelStyle={{ color: "hsl(var(--foreground))" }}
           />
           <Area
             type="monotone"
             dataKey="value"
             stroke="hsl(var(--accent))"
-            strokeWidth={2}
+            strokeWidth={2.5}
             fill="url(#impressionsGradient)"
           />
         </AreaChart>
@@ -79,22 +96,42 @@ export const ImpressionsChart = () => {
 export const PartnerCoverageChart = () => {
   return (
     <div className="stat-card h-80">
-      <h3 className="text-lg font-semibold text-foreground mb-4">
-        Verification Coverage by Partner
-      </h3>
-      <ResponsiveContainer width="100%" height="85%">
-        <BarChart data={partnerData}>
-          <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-          <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={11} />
-          <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="text-lg font-semibold text-foreground">Couverture par Partenaire</h3>
+        <span className="text-xs text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">Taux de vérification</span>
+      </div>
+      <ResponsiveContainer width="100%" height="80%">
+        <BarChart data={partnerData} barCategoryGap="20%">
+          <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.5} vertical={false} />
+          <XAxis 
+            dataKey="name" 
+            stroke="hsl(var(--muted-foreground))" 
+            fontSize={11}
+            tickLine={false}
+            axisLine={false}
+          />
+          <YAxis 
+            stroke="hsl(var(--muted-foreground))" 
+            fontSize={11}
+            tickLine={false}
+            axisLine={false}
+            domain={[0, 100]}
+            tickFormatter={(value) => `${value}%`}
+          />
           <Tooltip
             contentStyle={{
               backgroundColor: "hsl(var(--card))",
               border: "1px solid hsl(var(--border))",
-              borderRadius: "8px",
+              borderRadius: "12px",
+              boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.2)",
             }}
+            formatter={(value: number) => [`${value}%`, "Couverture"]}
           />
-          <Bar dataKey="value" fill="hsl(var(--accent))" radius={[4, 4, 0, 0]} />
+          <Bar 
+            dataKey="value" 
+            fill="hsl(var(--primary))" 
+            radius={[6, 6, 0, 0]}
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>
@@ -104,25 +141,47 @@ export const PartnerCoverageChart = () => {
 export const ViewabilityChart = () => {
   return (
     <div className="stat-card h-72">
-      <h3 className="text-lg font-semibold text-foreground mb-4">Viewability Trend</h3>
-      <ResponsiveContainer width="100%" height="85%">
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="text-lg font-semibold text-foreground">Tendance Visibilité</h3>
+        <div className="flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full bg-primary"></div>
+          <span className="text-xs text-muted-foreground">Taux de visibilité</span>
+        </div>
+      </div>
+      <ResponsiveContainer width="100%" height="80%">
         <LineChart data={viewabilityData}>
-          <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-          <XAxis dataKey="day" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-          <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+          <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.5} />
+          <XAxis 
+            dataKey="day" 
+            stroke="hsl(var(--muted-foreground))" 
+            fontSize={11}
+            tickLine={false}
+            axisLine={false}
+          />
+          <YAxis 
+            stroke="hsl(var(--muted-foreground))" 
+            fontSize={11}
+            tickLine={false}
+            axisLine={false}
+            domain={[50, 80]}
+            tickFormatter={(value) => `${value}%`}
+          />
           <Tooltip
             contentStyle={{
               backgroundColor: "hsl(var(--card))",
               border: "1px solid hsl(var(--border))",
-              borderRadius: "8px",
+              borderRadius: "12px",
+              boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.2)",
             }}
+            formatter={(value: number) => [`${value}%`, "Visibilité"]}
           />
           <Line
             type="monotone"
             dataKey="value"
-            stroke="hsl(270, 70%, 60%)"
-            strokeWidth={2}
-            dot={{ fill: "hsl(270, 70%, 60%)", r: 4 }}
+            stroke="hsl(var(--primary))"
+            strokeWidth={2.5}
+            dot={{ fill: "hsl(var(--primary))", r: 4, strokeWidth: 2, stroke: "hsl(var(--card))" }}
+            activeDot={{ r: 6, fill: "hsl(var(--primary))", stroke: "hsl(var(--card))", strokeWidth: 3 }}
           />
         </LineChart>
       </ResponsiveContainer>
