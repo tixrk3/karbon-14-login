@@ -31,18 +31,18 @@ export const AppSidebar = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 p-4">
-        <ul className="space-y-1">
+      <nav className="flex-1 px-4 py-6">
+        <ul className="space-y-2">
           {menuItems.map((item) => (
             <li key={item.title}>
               <NavLink
                 to={item.url}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sidebar-foreground transition-all duration-200 hover:bg-sidebar-accent/50 ${
+                className={`flex items-center gap-3 px-4 py-3.5 rounded-xl text-sidebar-foreground/80 transition-all duration-200 hover:bg-sidebar-accent/30 hover:text-sidebar-foreground ${
                   isActive(item.url)
-                    ? "bg-sidebar-primary/20 text-sidebar-primary border-l-2 border-sidebar-primary"
+                    ? "bg-sidebar-accent text-sidebar-accent-foreground font-semibold shadow-lg"
                     : ""
                 }`}
-                activeClassName="bg-sidebar-primary/20 text-sidebar-primary"
+                activeClassName="bg-sidebar-accent text-sidebar-accent-foreground"
               >
                 <item.icon className="h-5 w-5" />
                 <span className="font-medium">{item.title}</span>
@@ -53,18 +53,18 @@ export const AppSidebar = () => {
       </nav>
 
       {/* User Profile */}
-      <div className="p-4 border-t border-sidebar-border">
-        <div className="flex items-center gap-3 px-3 py-2">
-          <Avatar className="h-10 w-10 bg-accent text-accent-foreground">
-            <AvatarFallback className="bg-accent text-accent-foreground font-semibold">
+      <div className="p-4 border-t border-sidebar-border/50">
+        <div className="flex items-center gap-3 px-3 py-3 rounded-xl bg-sidebar-accent/20">
+          <Avatar className="h-10 w-10 bg-primary text-primary-foreground">
+            <AvatarFallback className="bg-primary text-primary-foreground font-semibold text-sm">
               SA
             </AvatarFallback>
           </Avatar>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-sidebar-foreground truncate">
+            <p className="text-sm font-semibold text-sidebar-foreground truncate">
               {user?.name || "Sarah Anderson"}
             </p>
-            <p className="text-xs text-muted-foreground truncate">
+            <p className="text-xs text-sidebar-foreground/60 truncate">
               {user?.role || "Administrator"}
             </p>
           </div>

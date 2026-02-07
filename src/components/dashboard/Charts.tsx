@@ -43,30 +43,28 @@ const viewabilityData = [
 
 export const ImpressionsChart = () => {
   return (
-    <div className="stat-card h-80">
+    <div className="stat-card h-96">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-semibold text-foreground">Impressions & Clicks</h3>
-        <span className="text-xs text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">7 derniers jours</span>
+        <h3 className="text-lg font-semibold text-foreground">Ventes & Achats</h3>
+        <select className="text-sm text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-lg border border-border/50 outline-none">
+          <option>6 Mois</option>
+          <option>3 Mois</option>
+          <option>1 Mois</option>
+        </select>
       </div>
       <ResponsiveContainer width="100%" height="80%">
-        <AreaChart data={impressionsData}>
-          <defs>
-            <linearGradient id="impressionsGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="hsl(var(--accent))" stopOpacity={0.3} />
-              <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity={0} />
-            </linearGradient>
-          </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.5} />
+        <BarChart data={impressionsData} barCategoryGap="25%">
+          <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.4} vertical={false} />
           <XAxis 
             dataKey="day" 
             stroke="hsl(var(--muted-foreground))" 
-            fontSize={11} 
+            fontSize={12} 
             tickLine={false}
             axisLine={false}
           />
           <YAxis 
             stroke="hsl(var(--muted-foreground))" 
-            fontSize={11} 
+            fontSize={12} 
             tickLine={false}
             axisLine={false}
             tickFormatter={(value) => `${(value / 1000).toFixed(0)}k`}
@@ -76,18 +74,12 @@ export const ImpressionsChart = () => {
               backgroundColor: "hsl(var(--card))",
               border: "1px solid hsl(var(--border))",
               borderRadius: "12px",
-              boxShadow: "0 10px 40px -10px hsl(var(--accent) / 0.2)",
+              boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
             }}
             labelStyle={{ color: "hsl(var(--foreground))" }}
           />
-          <Area
-            type="monotone"
-            dataKey="value"
-            stroke="hsl(var(--accent))"
-            strokeWidth={2.5}
-            fill="url(#impressionsGradient)"
-          />
-        </AreaChart>
+          <Bar dataKey="value" fill="hsl(var(--destructive))" radius={[6, 6, 0, 0]} name="Ventes" />
+        </BarChart>
       </ResponsiveContainer>
     </div>
   );
@@ -95,24 +87,24 @@ export const ImpressionsChart = () => {
 
 export const PartnerCoverageChart = () => {
   return (
-    <div className="stat-card h-80">
+    <div className="stat-card h-96">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-lg font-semibold text-foreground">Couverture par Partenaire</h3>
-        <span className="text-xs text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">Taux de vérification</span>
+        <span className="text-xs text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-lg">Taux de vérification</span>
       </div>
       <ResponsiveContainer width="100%" height="80%">
-        <BarChart data={partnerData} barCategoryGap="20%">
-          <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.5} vertical={false} />
+        <BarChart data={partnerData} barCategoryGap="25%">
+          <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.4} vertical={false} />
           <XAxis 
             dataKey="name" 
             stroke="hsl(var(--muted-foreground))" 
-            fontSize={11}
+            fontSize={12}
             tickLine={false}
             axisLine={false}
           />
           <YAxis 
             stroke="hsl(var(--muted-foreground))" 
-            fontSize={11}
+            fontSize={12}
             tickLine={false}
             axisLine={false}
             domain={[0, 100]}
@@ -123,7 +115,7 @@ export const PartnerCoverageChart = () => {
               backgroundColor: "hsl(var(--card))",
               border: "1px solid hsl(var(--border))",
               borderRadius: "12px",
-              boxShadow: "0 10px 40px -10px hsl(var(--primary) / 0.2)",
+              boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
             }}
             formatter={(value: number) => [`${value}%`, "Couverture"]}
           />
