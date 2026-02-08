@@ -37,27 +37,27 @@ export const LoginForm = () => {
 
   return (
     <div className="w-full max-w-md">
-      {/* Card with glass effect */}
-      <div className="bg-card/80 backdrop-blur-xl border border-border/50 shadow-2xl shadow-primary/5 rounded-3xl p-8 md:p-10">
+      {/* Clean card */}
+      <div className="bg-card border border-border/50 shadow-lg rounded-2xl p-8 md:p-10">
         {/* Logo */}
-        <div className="flex justify-center mb-10">
+        <div className="flex justify-center mb-8">
           <img
             src={karbon14Logo}
             alt="KARBON14"
-            className="h-24 w-auto drop-shadow-xl"
+            className="h-28 w-auto"
           />
         </div>
 
         {/* Welcome Text */}
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-foreground mb-2">Bienvenue</h1>
+          <h1 className="text-2xl font-semibold text-foreground mb-1">Bienvenue</h1>
           <p className="text-muted-foreground text-sm">Connectez-vous à votre compte</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Email */}
           <div className="space-y-2">
-            <Label htmlFor="email" className="text-foreground/80 text-sm font-medium">
+            <Label htmlFor="email" className="text-foreground text-sm font-medium">
               Adresse e-mail
             </Label>
             <Input
@@ -66,13 +66,13 @@ export const LoginForm = () => {
               placeholder="nom@exemple.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="h-12 bg-muted/50 border-border/50 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/60 transition-all"
+              className="h-11 bg-muted/30 border-border rounded-lg focus:border-primary focus:ring-1 focus:ring-primary/30 placeholder:text-muted-foreground/50"
             />
           </div>
 
           {/* Password */}
           <div className="space-y-2">
-            <Label htmlFor="password" className="text-foreground/80 text-sm font-medium">
+            <Label htmlFor="password" className="text-foreground text-sm font-medium">
               Mot de passe
             </Label>
             <div className="relative">
@@ -82,17 +82,17 @@ export const LoginForm = () => {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="h-12 bg-muted/50 border-border/50 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/60 pr-12 transition-all"
+                className="h-11 bg-muted/30 border-border rounded-lg focus:border-primary focus:ring-1 focus:ring-primary/30 placeholder:text-muted-foreground/50 pr-11"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
               >
                 {showPassword ? (
-                  <EyeOff className="h-5 w-5" />
+                  <EyeOff className="h-4 w-4" />
                 ) : (
-                  <Eye className="h-5 w-5" />
+                  <Eye className="h-4 w-4" />
                 )}
               </button>
             </div>
@@ -112,7 +112,7 @@ export const LoginForm = () => {
           <Button
             type="submit"
             disabled={isLoading}
-            className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5"
+            className="w-full h-11 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-colors"
           >
             {isLoading ? "Connexion..." : "Se connecter"}
           </Button>
@@ -121,7 +121,7 @@ export const LoginForm = () => {
           <Button
             type="button"
             variant="outline"
-            className="w-full h-12 border-border/50 hover:bg-muted/50 text-foreground font-medium rounded-xl transition-all duration-200"
+            className="w-full h-11 border-border hover:bg-muted/50 text-foreground font-medium rounded-lg transition-colors"
             onClick={() => window.open("https://karbon14.com", "_blank")}
           >
             Visitez le site KARBON14
@@ -129,8 +129,8 @@ export const LoginForm = () => {
         </form>
       </div>
 
-      {/* Platform Version - Outside card */}
-      <p className="text-center text-xs text-muted-foreground/60 mt-6">
+      {/* Platform Version */}
+      <p className="text-center text-xs text-muted-foreground mt-6">
         KARBON14 Platform • Version 1.0.0
       </p>
     </div>
