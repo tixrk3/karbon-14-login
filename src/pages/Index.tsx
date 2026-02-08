@@ -1,16 +1,20 @@
 import { Navigate } from "react-router-dom";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useState, useEffect } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LoginForm } from "@/components/LoginForm";
 import { useAuth } from "@/contexts/AuthContext";
 import { FadeIn } from "@/components/layout/PageTransition";
 
-const FloatingAtom = lazy(() => 
-  import("@/components/3d/FloatingAtom").then(mod => ({ default: mod.FloatingAtom }))
-);
+const FloatingAtom = lazy(() => import("@/components/3d/FloatingAtom"));
 
 const Index = () => {
   const { isAuthenticated } = useAuth();
+  const [show3D, setShow3D] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShow3D(true), 200);
+    return () => clearTimeout(timer);
+  }, []);
 
   if (isAuthenticated) {
     return <Navigate to="/dashboard" replace />;
@@ -19,9 +23,11 @@ const Index = () => {
   return (
     <div className="relative min-h-screen overflow-hidden bg-background">
       {/* 3D Atom Background */}
-      <Suspense fallback={null}>
-        <FloatingAtom />
-      </Suspense>
+      {show3D && (
+        <Suspense fallback={null}>
+          <FloatingAtom />
+        </Suspense>
+      )}
 
       {/* Subtle gradient overlays */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
