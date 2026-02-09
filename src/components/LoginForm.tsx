@@ -112,7 +112,7 @@ export const LoginForm = () => {
           <Button
             type="submit"
             disabled={isLoading}
-            className="w-full h-11 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-colors"
+            className="w-full h-11 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 active:translate-y-0"
           >
             {isLoading ? "Connexion..." : "Se connecter"}
           </Button>
@@ -121,7 +121,7 @@ export const LoginForm = () => {
           <Button
             type="button"
             variant="outline"
-            className="w-full h-11 border-border hover:bg-muted/50 text-foreground font-medium rounded-lg transition-colors"
+            className="w-full h-11 border-border hover:bg-muted/50 text-foreground font-medium rounded-lg transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
             onClick={() => window.open("https://karbon14.com", "_blank")}
           >
             Visitez le site KARBON14
