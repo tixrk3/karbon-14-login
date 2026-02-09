@@ -12,25 +12,22 @@ interface DashboardLayoutProps {
 const pageVariants = {
   initial: {
     opacity: 0,
-    scale: 0.96,
-    filter: "blur(10px)",
-    y: 20,
+    x: 20,
+    scale: 0.98,
   },
   animate: {
     opacity: 1,
+    x: 0,
     scale: 1,
-    filter: "blur(0px)",
-    y: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.4,
       ease: [0.25, 0.46, 0.45, 0.94],
     },
   },
   exit: {
     opacity: 0,
-    scale: 1.02,
-    filter: "blur(10px)",
-    y: -20,
+    x: -20,
+    scale: 0.98,
     transition: {
       duration: 0.3,
       ease: [0.25, 0.46, 0.45, 0.94],
@@ -48,7 +45,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <div className="flex min-h-screen bg-background">
       <AppSidebar />
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col">
         <AppHeader />
         <motion.main 
           className="flex-1 p-6 overflow-auto"
