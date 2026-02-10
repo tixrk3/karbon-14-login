@@ -6,6 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 type Theme = "light" | "dark" | "system";
 
@@ -49,12 +50,14 @@ export const ThemeToggle = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button
-          className="rounded-full p-2.5 bg-card/80 backdrop-blur-sm border border-border/50 hover:bg-card text-foreground transition-colors"
+        <Button
+          variant="ghost"
+          size="icon"
+          className="rounded-full bg-card/80 backdrop-blur-sm border border-border/50 hover:bg-card"
         >
           {getIcon()}
           <span className="sr-only">Changer le thème</span>
-        </button>
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="bg-card border-border">
         <DropdownMenuItem

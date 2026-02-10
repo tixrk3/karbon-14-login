@@ -1,16 +1,7 @@
-import { Navigate } from "react-router-dom";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LoginForm } from "@/components/LoginForm";
-import { useAuth } from "@/contexts/AuthContext";
 
 const Index = () => {
-  const { isAuthenticated } = useAuth();
-
-  // Redirect to dashboard if already logged in
-  if (isAuthenticated) {
-    return <Navigate to="/dashboard" replace />;
-  }
-
   return (
     <div className="relative min-h-screen overflow-hidden bg-background">
       {/* Background Blobs */}
