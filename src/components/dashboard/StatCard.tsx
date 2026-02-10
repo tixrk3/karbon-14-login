@@ -15,37 +15,34 @@ interface StatCardProps {
 
 export const StatCard = ({ icon, iconBg, label, value, trend }: StatCardProps) => {
   return (
-    <div className="stat-card group">
+    <div className="stat-card">
       <div className="flex items-start justify-between mb-4">
         <div
           className={cn(
             "w-12 h-12 rounded-xl flex items-center justify-center",
-            iconBg || "bg-primary/15"
+            iconBg || "bg-primary/20"
           )}
         >
           {icon}
         </div>
-      </div>
-      <p className="text-muted-foreground text-sm font-medium mb-1">{label}</p>
-      <p className="text-2xl font-bold text-foreground tracking-tight mb-2">{value}</p>
-      {trend && (
-        <div className="flex items-center gap-2 text-sm">
-          <span
+        {trend && (
+          <div
             className={cn(
-              "flex items-center gap-1 font-medium",
-              trend.isPositive ? "text-accent" : "text-destructive"
+              "flex items-center gap-1 text-sm font-medium",
+              trend.isPositive ? "trend-up" : "trend-down"
             )}
           >
             {trend.isPositive ? (
-              <TrendingUp className="h-3.5 w-3.5" />
+              <TrendingUp className="h-4 w-4" />
             ) : (
-              <TrendingDown className="h-3.5 w-3.5" />
+              <TrendingDown className="h-4 w-4" />
             )}
-            {trend.value}
-          </span>
-          <span className="text-muted-foreground">vs mois dernier</span>
-        </div>
-      )}
+            <span>{trend.value}</span>
+          </div>
+        )}
+      </div>
+      <p className="text-muted-foreground text-sm mb-1">{label}</p>
+      <p className="text-2xl font-bold text-foreground">{value}</p>
     </div>
   );
 };

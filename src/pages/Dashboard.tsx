@@ -17,61 +17,59 @@ import {
 const Dashboard = () => {
   return (
     <DashboardLayout>
-      <div className="space-y-8">
+      <div className="space-y-6">
         {/* Page Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground tracking-tight">Dashboard</h1>
-            <p className="text-muted-foreground mt-1">
-              Vue d'ensemble de vos métriques de vérification publicitaire
-            </p>
-          </div>
-          <div className="hidden md:flex items-center gap-2 text-sm text-muted-foreground bg-card border border-border/50 rounded-lg px-4 py-2">
-            <Activity className="h-4 w-4 text-accent" />
-            <span>Dernière mise à jour: il y a 5 min</span>
-          </div>
+        <div>
+          <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
+          <p className="text-muted-foreground mt-1">
+            Overview of your ad verification metrics
+          </p>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        {/* Stats Grid - Row 1 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <StatCard
-            icon={<TrendingUp className="h-7 w-7 text-accent" />}
-            iconBg="bg-accent/15"
-            label="Événements Inventaire"
+            icon={<TrendingUp className="h-6 w-6 text-accent" />}
+            iconBg="bg-accent/20"
+            label="Inventory Events"
             value="2,547,893"
             trend={{ value: "+12.5%", isPositive: true }}
           />
           <StatCard
-            icon={<Zap className="h-7 w-7 text-accent" />}
-            iconBg="bg-accent/15"
-            label="Réponses Pub"
+            icon={<Zap className="h-6 w-6 text-accent" />}
+            iconBg="bg-accent/20"
+            label="Ad Responses"
             value="1,893,421"
             trend={{ value: "+8.3%", isPositive: true }}
           />
           <StatCard
-            icon={<BarChart3 className="h-7 w-7 text-primary" />}
-            iconBg="bg-primary/15"
-            label="Taux de Remplissage"
+            icon={<BarChart3 className="h-6 w-6 text-primary" />}
+            iconBg="bg-primary/20"
+            label="Fill Rate"
             value="74.3%"
             trend={{ value: "-2.1%", isPositive: false }}
           />
+        </div>
+
+        {/* Stats Grid - Row 2 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <StatCard
-            icon={<Eye className="h-7 w-7 text-accent" />}
-            iconBg="bg-accent/15"
+            icon={<Eye className="h-6 w-6 text-accent" />}
+            iconBg="bg-accent/20"
             label="Impressions"
             value="1,654,234"
             trend={{ value: "+15.7%", isPositive: true }}
           />
           <StatCard
-            icon={<MousePointer className="h-7 w-7 text-primary" />}
-            iconBg="bg-primary/15"
-            label="Clics"
+            icon={<MousePointer className="h-6 w-6 text-pink-500" />}
+            iconBg="bg-pink-500/20"
+            label="Clicks"
             value="45,678"
             trend={{ value: "+9.2%", isPositive: true }}
           />
           <StatCard
-            icon={<Activity className="h-7 w-7 text-accent" />}
-            iconBg="bg-accent/15"
+            icon={<Activity className="h-6 w-6 text-accent" />}
+            iconBg="bg-accent/20"
             label="CTR"
             value="2.76%"
             trend={{ value: "+0.3%", isPositive: true }}
@@ -79,7 +77,7 @@ const Dashboard = () => {
         </div>
 
         {/* Charts Row */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <ImpressionsChart />
           <PartnerCoverageChart />
         </div>
