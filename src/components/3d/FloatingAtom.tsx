@@ -1,4 +1,4 @@
-import { useRef, useMemo, useState, useEffect } from "react";
+import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial, Sphere } from "@react-three/drei";
 import * as THREE from "three";
@@ -75,7 +75,7 @@ const ElectronOrbit = ({
 const FloatingParticles = () => {
   const particles = useMemo(() => {
     const temp = [];
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 50; i++) {
       temp.push({
         position: [
           (Math.random() - 0.5) * 8,
@@ -124,30 +124,15 @@ const AtomScene = () => {
 };
 
 export const FloatingAtom = () => {
-  const [isReady, setIsReady] = useState(false);
-
-  useEffect(() => {
-    // Small delay to ensure WebGL context is ready
-    const timer = setTimeout(() => setIsReady(true), 50);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (!isReady) return null;
-
   return (
     <div className="absolute inset-0 pointer-events-none">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 45 }}
         gl={{ antialias: true, alpha: true }}
         style={{ background: "transparent" }}
-        onCreated={({ gl }) => {
-          gl.setClearColor(0x000000, 0);
-        }}
       >
         <AtomScene />
       </Canvas>
     </div>
   );
 };
-
-export default FloatingAtom;
