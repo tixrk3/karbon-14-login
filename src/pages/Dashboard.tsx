@@ -36,8 +36,8 @@ const Dashboard = () => {
             trend={{ value: "+12.5%", isPositive: true }}
           />
           <StatCard
-            icon={<Zap className="h-6 w-6 text-accent" />}
-            iconBg="bg-accent/20"
+            icon={<Zap className="h-6 w-6 text-orange-400" />}
+            iconBg="bg-orange-400/20"
             label="Ad Responses"
             value="1,893,421"
             trend={{ value: "+8.3%", isPositive: true }}
@@ -61,15 +61,15 @@ const Dashboard = () => {
             trend={{ value: "+15.7%", isPositive: true }}
           />
           <StatCard
-            icon={<MousePointer className="h-6 w-6 text-pink-500" />}
-            iconBg="bg-pink-500/20"
+            icon={<MousePointer className="h-6 w-6 text-orange-400" />}
+            iconBg="bg-orange-400/20"
             label="Clicks"
             value="45,678"
             trend={{ value: "+9.2%", isPositive: true }}
           />
           <StatCard
-            icon={<Activity className="h-6 w-6 text-accent" />}
-            iconBg="bg-accent/20"
+            icon={<Activity className="h-6 w-6 text-pink-500" />}
+            iconBg="bg-pink-500/20"
             label="CTR"
             value="2.76%"
             trend={{ value: "+0.3%", isPositive: true }}
