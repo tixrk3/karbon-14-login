@@ -35,6 +35,9 @@
     --input: 220 20% 88%;
     --ring: 200 80% 32%;
 
+    --violet: 270 70% 55%;
+    --violet-foreground: 0 0% 100%;
+
     --radius: 0.75rem;
 
     --sidebar-background: 220 40% 98%;
@@ -76,6 +79,9 @@
     --border: 222 30% 18%;
     --input: 222 30% 18%;
     --ring: 200 80% 32%;
+
+    --violet: 270 70% 55%;
+    --violet-foreground: 0 0% 100%;
 
     --sidebar-background: 222 40% 11%;
     --sidebar-foreground: 218 12% 48%;
