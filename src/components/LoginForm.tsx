@@ -76,7 +76,7 @@ export const LoginForm = () => {
           </a>
         </div>
 
-        <Button type="submit" className="w-full h-12 font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-primary/25">
+        <Button type="submit" className="w-full h-12 font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[hsl(270,70%,55%)]/25 bg-gradient-to-r from-[hsl(270,70%,55%)] to-[hsl(280,80%,60%)] text-white hover:from-[hsl(270,70%,50%)] hover:to-[hsl(280,80%,55%)]">
           Se connecter
         </Button>
 
